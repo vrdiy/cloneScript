@@ -1,0 +1,8 @@
+python script.py -259 -64 121 -99 10 -100 150 -64 121 replace normal
+
+python script.py 41 65 39 4 82 9 -100 100 100 replace normal
+
+
+python script.py -99 72 171 -142 99 241 -105 70 294 replace normal
+
+python script.py -96 73 172 -204 102 245 -208 66 180 replace normal

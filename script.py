@@ -19,6 +19,9 @@ destinationZ = int(sys.argv[9])
 maskMode = sys.argv[10]
 cloneMode = sys.argv[11]
 
+destOffsetX = destinationX-(beginX-endX)
+destOffsetZ = destinationZ-(beginZ-endZ)
+
 
 #finds the inside-edge of the chunk you are in 
 def findBorder(num,direction):
@@ -98,7 +101,8 @@ selection = [[0 for x in range(numChunksX)] for z in range(numChunksZ)]
 
 def solve():
     file = open("clone.mcfunction","w")
-
+    forceload = "forceload add {destinationX} {destinationZ} {destOffsetX} {destOffsetZ}\n".format(destinationX=destinationX,destinationZ=destinationZ,destOffsetX=destOffsetX,destOffsetZ=destOffsetZ)
+    file.write(forceload)
     counterX = 0
     counterZ = 0
     x,y,z,end_x,end_y,end_z,destx,desty,destz = 0,0,0,0,0,0,0,0,0
@@ -141,6 +145,8 @@ def solve():
             counterX += 1
         counterX = 0
         counterZ += 1
+    forceloadremove = "forceload remove {destinationX} {destinationZ} {destOffsetX} {destOffsetZ}\n".format(destinationX=destinationX,destinationZ=destinationZ,destOffsetX=destOffsetX,destOffsetZ=destOffsetZ)
+    file.write(forceloadremove)
     file.close()
 
 solve()
